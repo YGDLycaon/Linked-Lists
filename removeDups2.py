@@ -6,7 +6,8 @@ class Node:
 class LinkedList:
     def __init__(self):
         self.head=None
-        self.tail=None   
+        self.tail=None 
+     
     
     def addNode(self,data):
         newNode=Node(data)
@@ -48,13 +49,28 @@ class LinkedList:
                 return True
         return False
 
+    def removeDups(self):
+        current=self.head
+        while current != None:
+            marker=current
+            while marker.next != None:
+                if current.data == marker.next.data:
+                    marker.next=marker.next.next
+                else:
+                    marker=marker.next
+            current=current.next                    
+        
+
 
 l=LinkedList()
 l.addNode(1)
 l.addNode(2)
+l.addNode(2)
+l.addNode(3)
 l.addNode(3)
 l.addNode(4)
 l.iterate()
 print("\n")
-l.removeNode(1)
+l.removeDups()
 l.iterate()
+
