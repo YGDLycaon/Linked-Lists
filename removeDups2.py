@@ -59,18 +59,51 @@ class LinkedList:
                 else:
                     marker=marker.next
             current=current.next                    
-        
+    
+    def retKtoLast(self,k):
+        node=self.head
+        i=0
+        while node != None:
+            i+=1
+            if k==i:
+                #print (node.data)
+                self.head=node
+            node=node.next 
+    
+    def getSize(self):
+        node=self.head
+        length=0
+        while node != None:
+            length+=1
+            node=node.next
+        return length
 
+    def delMidNode(self,length):
+        node=self.head
+        middle=length//2
+        prev=None
+        j=0
+        while node != None and j<middle:
+            prev=node
+            node=node.next
+            j+=1
+        if prev==None:
+            self.head=node.next                
+        else:
+            prev.next=node.next
+                
+            
+            
 
 l=LinkedList()
-l.addNode(1)
-l.addNode(2)
-l.addNode(2)
+l.addNode(11)
+l.addNode(23)
 l.addNode(3)
-l.addNode(3)
-l.addNode(4)
+l.addNode(5)
+l.addNode(7)
+
 l.iterate()
 print("\n")
-l.removeDups()
+x=l.getSize()
+l.delMidNode(x)
 l.iterate()
-
